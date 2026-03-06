@@ -1,0 +1,471 @@
+/* ===== CSS Variables - Dark Mode ===== */
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1a1a1a;
+    --accent: #00d4ff;
+    --accent-hover: #00b8e6;
+    --accent-glow: rgba(0, 212, 255, 0.25);
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border: rgba(255, 255, 255, 0.08);
+    --font-main: 'Inter', -apple-system, sans-serif;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ===== Navigation - Discrete & Dark ===== */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav.scrolled {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.nav__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--accent);
+}
+
+.nav__links {
+    display: flex;
+    gap: 2.25rem;
+}
+
+.nav__links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.nav__links a:hover {
+    color: var(--accent);
+}
+
+.nav__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav__toggle span {
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 6rem 1.5rem 4rem;
+}
+
+.hero__glow {
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    width: 350px;
+    height: 350px;
+    background: var(--accent-glow);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.hero__content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero__title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.hero__subtitle {
+    font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero__cta {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: var(--bg-primary) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.hero__cta:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+/* ===== Section Title ===== */
+.section__title {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--text-primary);
+}
+
+/* ===== O meni Section ===== */
+.o-meni {
+    padding: 5rem 0;
+}
+
+.o-meni__text {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+}
+
+/* ===== Projekti Section - Glassmorphism Cards ===== */
+.projekti {
+    padding: 5rem 0;
+}
+
+.projekti__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+/* 3 kolone na velikom ekranu, 2 na tabletu, 1 na telefonu */
+@media (max-width: 900px) {
+    .projekti__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .projekti__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.projekt__card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projekt__card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 40px var(--accent-glow);
+}
+
+.projekt__image {
+    display: block;
+    aspect-ratio: 400 / 240;
+    overflow: hidden;
+}
+
+.projekt__image img {
+    width: 100%;
+    height: 100%;
+}
+
+.projekt__content {
+    padding: 1.5rem;
+}
+
+.projekt__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.projekt__desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.projekt__btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.projekt__btn:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+}
+
+.projekt__badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 2;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(255, 180, 0, 0.9);
+    color: #121212;
+    border-radius: 4px;
+}
+
+.projekt__card--coming-soon:hover {
+    cursor: default;
+}
+
+/* ===== Veštine Section - Badges ===== */
+.vestine {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+}
+
+.vestine__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.vestine__badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.25s ease;
+}
+
+.vestine__badge:hover {
+    background: rgba(0, 212, 255, 0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ===== Kontakt Section ===== */
+.kontakt {
+    padding: 5rem 0;
+}
+
+.kontakt__text {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.kontakt__links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.kontakt__btn {
+    padding: 0.7rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.kontakt__btn:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+}
+
+/* ===== Footer ===== */
+.footer {
+    padding: 1.5rem 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.footer__content {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer__link {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+    color: var(--accent);
+}
+
+/* ===== Responsive - Mobile ===== */
+@media (max-width: 768px) {
+    .nav__links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 280px;
+        height: 100vh;
+        background: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        border-left: 1px solid var(--border);
+        transition: right 0.3s ease;
+    }
+
+    .nav__links.active {
+        right: 0;
+    }
+
+    .nav__toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .nav__toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav__toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav__toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .projekti__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__glow {
+        width: 200px;
+        height: 200px;
+        top: 15%;
+        right: -30%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 5rem 1rem 3rem;
+    }
+
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    .projekt__content {
+        padding: 1.25rem;
+    }
+
+    .vestine__badge {
+        font-size: 0.85rem;
+        padding: 0.45rem 0.85rem;
+    }
+}

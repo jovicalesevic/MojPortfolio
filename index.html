@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joca Lešević | Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__container">
+            <a href="#hero" class="nav__logo">JL</a>
+            <ul class="nav__links">
+                <li><a href="#o-meni">O meni</a></li>
+                <li><a href="#projekti">Projekti</a></li>
+                <li><a href="#vestine">Veštine</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <button class="nav__toggle" aria-label="Meni">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">Joca Lešević</h1>
+            <p class="hero__subtitle">Frontend Developer u nastajanju | 21 godina iskustva u realnom sektoru</p>
+            <a href="#projekti" class="hero__cta">Pogledaj moje radove</a>
+        </div>
+        <div class="hero__glow"></div>
+    </section>
+
+    <!-- O meni Section -->
+    <section id="o-meni" class="o-meni">
+        <div class="container">
+            <h2 class="section__title">O meni</h2>
+            <p class="o-meni__text">Nakon dve decenije rada, odlučio sam da spojim logiku realnog biznisa sa moćima AI i frontend programiranja. Verujem u rešenja koja pomažu ljudima, poput mog AgroAsistenta.</p>
+        </div>
+    </section>
+
+    <!-- Projekti Section -->
+    <section id="projekti" class="projekti">
+        <div class="container">
+            <h2 class="section__title">Moji Projekti</h2>
+            <div class="projekti__grid">
+                <article class="projekt__card">
+                    <a href="https://jovicalesevic.github.io/AgroAsistent/" target="_blank" rel="noopener noreferrer" class="projekt__image">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=AgroAsistent" alt="AgroAsistent" loading="lazy">
+                    </a>
+                    <div class="projekt__content">
+                        <h3 class="projekt__title">AgroAsistent</h3>
+                        <p class="projekt__desc">Digitalni alat za modernog poljoprivrednika — Vreme, Kalkulator, Beležnica.</p>
+                        <a href="https://github.com/jovicalesevic/AgroAsistent" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                    </div>
+                </article>
+                <article class="projekt__card">
+                    <a href="https://jovicalesevic.github.io/CryptoDashboard/" target="_blank" rel="noopener noreferrer" class="projekt__image">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Crypto+Dashboard" alt="Crypto Dashboard" loading="lazy">
+                    </a>
+                    <div class="projekt__content">
+                        <h3 class="projekt__title">Crypto Dashboard</h3>
+                        <p class="projekt__desc">Praćenje vrednosti kriptovaluta u realnom vremenu (Vibe Coding).</p>
+                        <a href="https://github.com/jovicalesevic/CryptoDashboard" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                    </div>
+                </article>
+                <article class="projekt__card">
+                    <div class="projekt__image">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=To-Do+App" alt="To-Do App" loading="lazy">
+                    </div>
+                    <div class="projekt__content">
+                        <h3 class="projekt__title">To-Do App</h3>
+                        <p class="projekt__desc">Minimalistička aplikacija za organizaciju svakodnevnih zadataka.</p>
+                        <a href="https://github.com/jovicalesevic/To-Do-App" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                    </div>
+                </article>
+                <article class="projekt__card projekt__card--coming-soon">
+                    <span class="projekt__badge">U izradi</span>
+                    <div class="projekt__image">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Weather+App" alt="Weather App" loading="lazy">
+                    </div>
+                    <div class="projekt__content">
+                        <h3 class="projekt__title">Weather App</h3>
+                        <p class="projekt__desc">Precizna prognoza sa Open-Weather API integracijom.</p>
+                    </div>
+                </article>
+                <article class="projekt__card projekt__card--coming-soon">
+                    <span class="projekt__badge">U izradi</span>
+                    <div class="projekt__image">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Expense+Tracker" alt="Expense Tracker" loading="lazy">
+                    </div>
+                    <div class="projekt__content">
+                        <h3 class="projekt__title">Expense Tracker</h3>
+                        <p class="projekt__desc">Pametno praćenje troškova i budžeta za domaćinstvo.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Veštine Section -->
+    <section id="vestine" class="vestine">
+        <div class="container">
+            <h2 class="section__title">Veštine</h2>
+            <div class="vestine__grid">
+                <span class="vestine__badge">HTML5</span>
+                <span class="vestine__badge">CSS3</span>
+                <span class="vestine__badge">JavaScript</span>
+                <span class="vestine__badge">Linux Mint</span>
+                <span class="vestine__badge">GitHub</span>
+                <span class="vestine__badge">Cursor (AI Coding)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="kontakt" class="kontakt">
+        <div class="container">
+            <h2 class="section__title">Kontakt</h2>
+            <p class="kontakt__text">Imate projekat na umu? Javite mi se.</p>
+            <div class="kontakt__links">
+                <a href="mailto:joca@example.com" class="kontakt__btn">Email</a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="kontakt__btn">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__content">
+            <a href="https://github.com" target="_blank" rel="noopener" class="footer__link">GitHub</a>
+            <a href="mailto:joca@example.com" class="footer__link">Email</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

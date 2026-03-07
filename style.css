@@ -198,12 +198,73 @@ img {
 }
 
 .o-meni__text {
-    max-width: 620px;
+    max-width: 720px;
     margin: 0 auto;
     text-align: center;
     font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.85;
+}
+
+/* ===== Šta radim (Usluge) Section ===== */
+.usluge {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+}
+
+.usluge__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+.usluge__card {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.usluge__card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 40px var(--accent-glow);
+}
+
+.usluge__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.usluge__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.usluge__desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .usluge__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .usluge__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ===== Projekti Section - Glassmorphism Cards ===== */

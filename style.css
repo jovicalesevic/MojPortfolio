@@ -11,10 +11,6 @@
     --font-main: 'Inter', -apple-system, sans-serif;
 }
 
-/* Sakrij engleski tekst ako je izabran srpski i obrnuto */
-body.lang-sr [data-lang="en"] { display: none; }
-body.lang-en [data-lang="sr"] { display: none; }
-
 /* Skriveni tekst za naslov stranice, aria i alt sinhronizaciju (ostaje u DOM-u) */
 .u-visually-hidden {
     position: absolute;
@@ -598,3 +594,14 @@ img {
         padding: 0.45rem 0.85rem;
     }
 }
+
+/* Po defaultu sakrij sav engleski tekst */
+[data-lang='en'] { display: none !important; }
+
+/* Kada body ima klasu 'lang-en', sakrij srpski a prikaži engleski */
+body.lang-en [data-lang='sr'] { display: none !important; }
+body.lang-en [data-lang='en'] { display: inline-block !important; }
+
+/* Kada body ima klasu 'lang-sr', osiguraj da je engleski sakriven */
+body.lang-sr [data-lang='en'] { display: none !important; }
+body.lang-sr [data-lang='sr'] { display: inline-block !important; }

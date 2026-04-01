@@ -1,4 +1,4 @@
-const LANG_STORAGE_KEY = 'portfolio-lang';
+const LANG_STORAGE_KEY = 'selectedLanguage';
 
 function getStoredLang() {
     const stored = localStorage.getItem(LANG_STORAGE_KEY);
@@ -38,7 +38,7 @@ function syncProjektImageAlts(lang) {
     });
 }
 
-function applyLanguage(lang) {
+function setLanguage(lang) {
     if (lang !== 'en' && lang !== 'sr') {
         return;
     }
@@ -52,26 +52,20 @@ function applyLanguage(lang) {
     syncNavLangGroupAria(lang);
     syncProjektImageAlts(lang);
 
-    document.querySelectorAll('.nav__lang-btn').forEach((btn) => {
-        const active = btn.getAttribute('data-lang-switch') === lang;
-        btn.classList.toggle('nav__lang-btn--active', active);
-        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    document.querySelectorAll('.nav__lang-btn[data-lang-target]').forEach((btn) => {
+        const target = btn.getAttribute('data-lang-target');
+        if (target === 'sr' || target === 'en') {
+            const active = target === lang;
+            btn.classList.toggle('nav__lang-btn--active', active);
+            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        }
     });
 
     localStorage.setItem(LANG_STORAGE_KEY, lang);
 }
 
 function initLanguage() {
-    applyLanguage(getStoredLang());
-
-    document.querySelectorAll('.nav__lang-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const l = btn.getAttribute('data-lang-switch');
-            if (l === 'sr' || l === 'en') {
-                applyLanguage(l);
-            }
-        });
-    });
+    setLanguage(getStoredLang());
 }
 
 if (document.readyState === 'loading') {
@@ -80,7 +74,6 @@ if (document.readyState === 'loading') {
     initLanguage();
 }
 
-// Mobile menu toggle
 const navToggle = document.querySelector('.nav__toggle');
 const navLinks = document.querySelector('.nav__links');
 const navLinksItems = document.querySelectorAll('.nav__links a');

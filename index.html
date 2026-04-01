@@ -12,7 +12,7 @@
 <body>
 <script>
 (function () {
-    var k = 'portfolio-lang';
+    var k = 'selectedLanguage';
     var lang = localStorage.getItem(k) === 'en' ? 'en' : 'sr';
     document.documentElement.lang = lang === 'en' ? 'en' : 'sr';
     document.body.classList.add('lang-' + lang);
@@ -34,9 +34,9 @@
                     <span data-lang="sr">Izbor jezika</span>
                     <span data-lang="en">Language</span>
                 </span>
-                <button type="button" class="nav__lang-btn nav__lang-btn--active" data-lang-switch="sr" aria-pressed="true">SRB</button>
+                <button type="button" class="nav__lang-btn nav__lang-btn--active" data-lang-target="sr" onclick="setLanguage('sr')" aria-pressed="true">SRB</button>
                 <span class="nav__lang-sep" aria-hidden="true">|</span>
-                <button type="button" class="nav__lang-btn" data-lang-switch="en" aria-pressed="false">ENG</button>
+                <button type="button" class="nav__lang-btn" data-lang-target="en" onclick="setLanguage('en')" aria-pressed="false">ENG</button>
             </div>
             <button class="nav__toggle" type="button" aria-label="Meni">
                 <span class="u-visually-hidden nav__toggle-label" aria-hidden="true">
@@ -129,7 +129,7 @@
                         </span>
                     </a>
                     <div class="projekt__content">
-                        <h3 class="projekt__title">Crypto Dashboard</h3>
+                        <h3 class="projekt__title"><span data-lang="sr">Crypto Dashboard</span><span data-lang="en">Crypto Dashboard</span></h3>
                         <p class="projekt__desc"><span data-lang="sr">Praćenje vrednosti kriptovaluta u realnom vremenu (projekat „vibe coding“).</span><span data-lang="en">Real-time cryptocurrency price tracking (a vibe-coding project).</span></p>
                         <a href="https://github.com/jovicalesevic/CryptoDashboard" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
@@ -143,7 +143,7 @@
                         </span>
                     </a>
                     <div class="projekt__content">
-                        <h3 class="projekt__title">DevTasker</h3>
+                        <h3 class="projekt__title"><span data-lang="sr">DevTasker</span><span data-lang="en">DevTasker</span></h3>
                         <p class="projekt__desc"><span data-lang="sr">Minimalistička aplikacija za organizaciju svakodnevnih zadataka.</span><span data-lang="en">A minimalist app for organising everyday tasks.</span></p>
                         <a href="https://github.com/jovicalesevic/DevTasker" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
@@ -157,7 +157,7 @@
                         </span>
                     </a>
                     <div class="projekt__content">
-                        <h3 class="projekt__title">Weather App</h3>
+                        <h3 class="projekt__title"><span data-lang="sr">Weather App</span><span data-lang="en">Weather App</span></h3>
                         <p class="projekt__desc"><span data-lang="sr">Prognoza vremena uz integraciju OpenWeather API-ja.</span><span data-lang="en">Weather forecasts with OpenWeather API integration.</span></p>
                         <a href="https://github.com/jovicalesevic/WeatherApp" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
@@ -171,7 +171,7 @@
                         </span>
                     </a>
                     <div class="projekt__content">
-                        <h3 class="projekt__title">Expense Tracker</h3>
+                        <h3 class="projekt__title"><span data-lang="sr">Expense Tracker</span><span data-lang="en">Expense Tracker</span></h3>
                         <p class="projekt__desc"><span data-lang="sr">Praćenje troškova i budžeta za domaćinstvo na jednostavan način.</span><span data-lang="en">Straightforward household expense and budget tracking.</span></p>
                         <a href="https://github.com/jovicalesevic/ExpenseTracker" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>

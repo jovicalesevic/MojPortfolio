@@ -10,18 +10,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<script>
+(function () {
+    var k = 'portfolio-lang';
+    var lang = localStorage.getItem(k) === 'en' ? 'en' : 'sr';
+    document.documentElement.lang = lang === 'en' ? 'en' : 'sr';
+    document.body.classList.add('lang-' + lang);
+})();
+</script>
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav__container">
             <a href="#hero" class="nav__logo">JL</a>
             <ul class="nav__links">
-                <li><a href="#o-meni">O meni</a></li>
-                <li><a href="#usluge">Usluge</a></li>
-                <li><a href="#projekti">Projekti</a></li>
-                <li><a href="#vestine">Veštine</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#o-meni"><span data-lang="sr">O meni</span><span data-lang="en">About</span></a></li>
+                <li><a href="#usluge"><span data-lang="sr">Usluge</span><span data-lang="en">Services</span></a></li>
+                <li><a href="#projekti"><span data-lang="sr">Projekti</span><span data-lang="en">Projects</span></a></li>
+                <li><a href="#vestine"><span data-lang="sr">Veštine</span><span data-lang="en">Skills</span></a></li>
+                <li><a href="#kontakt"><span data-lang="sr">Kontakt</span><span data-lang="en">Contact</span></a></li>
             </ul>
-            <button class="nav__toggle" aria-label="Meni">
+            <div class="nav__lang" role="group" aria-label="Izbor jezika">
+                <span class="u-visually-hidden nav__lang-aria-label" aria-hidden="true">
+                    <span data-lang="sr">Izbor jezika</span>
+                    <span data-lang="en">Language</span>
+                </span>
+                <button type="button" class="nav__lang-btn nav__lang-btn--active" data-lang-switch="sr" aria-pressed="true">SRB</button>
+                <span class="nav__lang-sep" aria-hidden="true">|</span>
+                <button type="button" class="nav__lang-btn" data-lang-switch="en" aria-pressed="false">ENG</button>
+            </div>
+            <button class="nav__toggle" type="button" aria-label="Meni">
+                <span class="u-visually-hidden nav__toggle-label" aria-hidden="true">
+                    <span data-lang="sr">Meni</span>
+                    <span data-lang="en">Menu</span>
+                </span>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -32,9 +53,15 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero__content">
-            <h1 class="hero__title">Zdravo, ja sam<br>Jovica Lešević.</h1>
-            <p class="hero__subtitle">Frontend Web Developer fokusiran na React i MERN stack. Pretvaram ideje u digitalnu stvarnost koristeći najsavremenije pristupe razvoju.</p>
-            <a href="#projekti" class="hero__cta">Pogledaj moje radove</a>
+            <h1 class="hero__title">
+                <span data-lang="sr">Zdravo, ja sam<br>Jovica Lešević.</span>
+                <span data-lang="en">Hello, I'm<br>Jovica Lešević.</span>
+            </h1>
+            <p class="hero__subtitle">
+                <span data-lang="sr">Frontend Web Developer fokusiran na React i MERN stack. Pretvaram ideje u digitalnu stvarnost koristeći savremene pristupe razvoju.</span>
+                <span data-lang="en">Frontend developer focused on React and the MERN stack. I turn ideas into working products using modern, pragmatic development practices.</span>
+            </p>
+            <a href="#projekti" class="hero__cta"><span data-lang="sr">Pogledaj moje radove</span><span data-lang="en">View my work</span></a>
         </div>
         <div class="hero__glow"></div>
     </section>
@@ -42,30 +69,33 @@
     <!-- O meni Section -->
     <section id="o-meni" class="o-meni">
         <div class="container">
-            <h2 class="section__title">O meni</h2>
-            <p class="o-meni__text">Kao Frontend Developer u nastajanju, svakom projektu pristupam sa ozbiljnim profesionalnim iskustvom i fokusom na rešavanje konkretnih problema. Specijalizujem se za izradu brzih, responzivnih sajtova i web aplikacija. Trenutno intenzivno radim u MERN stack-u i koristim napredne koncepte poput AI-asistiranog kodiranja kako bih klijentima isporučio maksimalan kvalitet i efikasnost. Bilo da vam je potrebna jednostavna web prezentacija ili kompleksnija aplikacija, tu sam da vašu ideju sprovedem u delo.</p>
+            <h2 class="section__title"><span data-lang="sr">O meni</span><span data-lang="en">About me</span></h2>
+            <p class="o-meni__text">
+                <span data-lang="sr">Sa više od 21 godine profesionalnog iskustva u različitim oblastima, sada svoj fokus usmeravam ka IT sektoru i frontend razvoju. Svakom projektu pristupam disciplinovano, sa jasnim ciljem da rešim stvarne probleme korisnika i klijenata. Specijalizujem se za izradu brzih, responzivnih veb sajtova i veb aplikacija. Intenzivno radim u MERN stack-u i koristim napredne prakse, uključujući AI-asistirano kodiranje, kako bih isporučio visok kvalitet i efikasnost. Bilo da vam treba jednostavna veb prezentacija ili složenija aplikacija, tu sam da vašu ideju pretvorim u gotov proizvod.</span>
+                <span data-lang="en">With over 21 years of professional experience across several industries, I am now focusing on IT and frontend development. I bring the same discipline and outcome-driven mindset to every project: solving real problems for users and clients. I specialise in fast, responsive websites and web applications, work hands-on with the MERN stack, and adopt advanced practices—including AI-assisted coding—to deliver quality and efficiency. Whether you need a simple marketing site or a more complex application, I am here to turn your idea into a finished product.</span>
+            </p>
         </div>
     </section>
 
     <!-- Šta radim (Usluge) Section -->
     <section id="usluge" class="usluge">
         <div class="container">
-            <h2 class="section__title">Šta radim</h2>
+            <h2 class="section__title"><span data-lang="sr">Šta radim</span><span data-lang="en">What I do</span></h2>
             <div class="usluge__grid">
                 <article class="usluge__card">
                     <div class="usluge__icon">🌐</div>
-                    <h3 class="usluge__title">Moderne Web Prezentacije</h3>
-                    <p class="usluge__desc">Izrada brzih i vizuelno privlačnih sajtova koji jasno komuniciraju vašu poruku i brend.</p>
+                    <h3 class="usluge__title"><span data-lang="sr">Moderne veb prezentacije</span><span data-lang="en">Modern web presentations</span></h3>
+                    <p class="usluge__desc"><span data-lang="sr">Izrada brzih i vizuelno jasnih sajtova koji dobro prenose vašu poruku i brend.</span><span data-lang="en">Fast, polished websites that communicate your message and brand with clarity.</span></p>
                 </article>
                 <article class="usluge__card">
                     <div class="usluge__icon">📱</div>
-                    <h3 class="usluge__title">Responzivni Dizajn</h3>
-                    <p class="usluge__desc">Sajtovi koji izgledaju i funkcionišu besprekorno na svim uređajima – od mobilnih telefona do velikih monitora.</p>
+                    <h3 class="usluge__title"><span data-lang="sr">Responzivni dizajn</span><span data-lang="en">Responsive design</span></h3>
+                    <p class="usluge__desc"><span data-lang="sr">Sajtovi koji izgledaju i rade uredno na svim uređajima — od telefona do velikih ekrana.</span><span data-lang="en">Layouts that look and behave consistently from phones to large desktop screens.</span></p>
                 </article>
                 <article class="usluge__card">
                     <div class="usluge__icon">⚙️</div>
-                    <h3 class="usluge__title">Razvoj Web Aplikacija</h3>
-                    <p class="usluge__desc">Planiranje i izrada interaktivnih aplikacija koje automatizuju procese i olakšavaju rad.</p>
+                    <h3 class="usluge__title"><span data-lang="sr">Razvoj veb aplikacija</span><span data-lang="en">Web application development</span></h3>
+                    <p class="usluge__desc"><span data-lang="sr">Planiranje i izrada interaktivnih aplikacija koje pojednostavljuju procese i svakodnevni rad.</span><span data-lang="en">Planning and building interactive applications that streamline workflows and day-to-day tasks.</span></p>
                 </article>
             </div>
         </div>
@@ -74,66 +104,90 @@
     <!-- Projekti Section -->
     <section id="projekti" class="projekti">
         <div class="container">
-            <h2 class="section__title">Moji Projekti</h2>
+            <h2 class="section__title"><span data-lang="sr">Moji projekti</span><span data-lang="en">My projects</span></h2>
             <div class="projekti__grid">
                 <article class="projekt__card">
                     <a href="https://jovicalesevic.github.io/AgroAsistent/" target="_blank" rel="noopener noreferrer" class="projekt__image">
-                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=AgroAsistent" alt="AgroAsistent" loading="lazy">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=AgroAsistent" alt="AgroAsistent" class="projekt__thumb" loading="lazy">
+                        <span class="u-visually-hidden projekt__img-alt" aria-hidden="true">
+                            <span data-lang="sr">AgroAsistent</span>
+                            <span data-lang="en">AgroAssistant</span>
+                        </span>
                     </a>
                     <div class="projekt__content">
-                        <h3 class="projekt__title">AgroAsistent</h3>
-                        <p class="projekt__desc">Digitalni alat za modernog poljoprivrednika — Vreme, Kalkulator, Beležnica.</p>
-                        <a href="https://github.com/jovicalesevic/AgroAsistent" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                        <h3 class="projekt__title"><span data-lang="sr">AgroAsistent</span><span data-lang="en">AgroAssistant</span></h3>
+                        <p class="projekt__desc"><span data-lang="sr">Digitalni pomoćnik za poljoprivrednika: vreme, kalkulator i beležnica na jednom mestu.</span><span data-lang="en">A digital assistant for farmers: weather, a calculator, and a notebook in one place.</span></p>
+                        <a href="https://github.com/jovicalesevic/AgroAsistent" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
                 </article>
                 <article class="projekt__card">
                     <a href="https://jovicalesevic.github.io/CryptoDashboard/" target="_blank" rel="noopener noreferrer" class="projekt__image">
-                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Crypto+Dashboard" alt="Crypto Dashboard" loading="lazy">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Crypto+Dashboard" alt="Crypto Dashboard" class="projekt__thumb" loading="lazy">
+                        <span class="u-visually-hidden projekt__img-alt" aria-hidden="true">
+                            <span data-lang="sr">Crypto Dashboard</span>
+                            <span data-lang="en">Crypto Dashboard</span>
+                        </span>
                     </a>
                     <div class="projekt__content">
                         <h3 class="projekt__title">Crypto Dashboard</h3>
-                        <p class="projekt__desc">Praćenje vrednosti kriptovaluta u realnom vremenu (Vibe Coding).</p>
-                        <a href="https://github.com/jovicalesevic/CryptoDashboard" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                        <p class="projekt__desc"><span data-lang="sr">Praćenje vrednosti kriptovaluta u realnom vremenu (projekat „vibe coding“).</span><span data-lang="en">Real-time cryptocurrency price tracking (a vibe-coding project).</span></p>
+                        <a href="https://github.com/jovicalesevic/CryptoDashboard" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
                 </article>
                 <article class="projekt__card">
                     <a href="https://jovicalesevic.github.io/DevTasker/" target="_blank" rel="noopener noreferrer" class="projekt__image">
-                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=DevTasker" alt="DevTasker" loading="lazy">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=DevTasker" alt="DevTasker" class="projekt__thumb" loading="lazy">
+                        <span class="u-visually-hidden projekt__img-alt" aria-hidden="true">
+                            <span data-lang="sr">DevTasker</span>
+                            <span data-lang="en">DevTasker</span>
+                        </span>
                     </a>
                     <div class="projekt__content">
                         <h3 class="projekt__title">DevTasker</h3>
-                        <p class="projekt__desc">Minimalistička aplikacija za organizaciju svakodnevnih zadataka.</p>
-                        <a href="https://github.com/jovicalesevic/DevTasker" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                        <p class="projekt__desc"><span data-lang="sr">Minimalistička aplikacija za organizaciju svakodnevnih zadataka.</span><span data-lang="en">A minimalist app for organising everyday tasks.</span></p>
+                        <a href="https://github.com/jovicalesevic/DevTasker" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
                 </article>
                 <article class="projekt__card">
                     <a href="WeatherApp/index.html" target="_blank" rel="noopener noreferrer" class="projekt__image">
-                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Weather+App" alt="Weather App" loading="lazy">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Weather+App" alt="Weather App" class="projekt__thumb" loading="lazy">
+                        <span class="u-visually-hidden projekt__img-alt" aria-hidden="true">
+                            <span data-lang="sr">Weather App</span>
+                            <span data-lang="en">Weather App</span>
+                        </span>
                     </a>
                     <div class="projekt__content">
                         <h3 class="projekt__title">Weather App</h3>
-                        <p class="projekt__desc">Precizna prognoza sa Open-Weather API integracijom.</p>
-                        <a href="https://github.com/jovicalesevic/WeatherApp" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                        <p class="projekt__desc"><span data-lang="sr">Prognoza vremena uz integraciju OpenWeather API-ja.</span><span data-lang="en">Weather forecasts with OpenWeather API integration.</span></p>
+                        <a href="https://github.com/jovicalesevic/WeatherApp" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
                 </article>
                 <article class="projekt__card">
                     <a href="https://jovicalesevic.github.io/ExpenseTracker/" target="_blank" rel="noopener noreferrer" class="projekt__image">
-                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Expense+Tracker" alt="Expense Tracker" loading="lazy">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Expense+Tracker" alt="Expense Tracker" class="projekt__thumb" loading="lazy">
+                        <span class="u-visually-hidden projekt__img-alt" aria-hidden="true">
+                            <span data-lang="sr">Expense Tracker</span>
+                            <span data-lang="en">Expense Tracker</span>
+                        </span>
                     </a>
                     <div class="projekt__content">
                         <h3 class="projekt__title">Expense Tracker</h3>
-                        <p class="projekt__desc">Pametno praćenje troškova i budžeta za domaćinstvo.</p>
-                        <a href="https://github.com/jovicalesevic/ExpenseTracker" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                        <p class="projekt__desc"><span data-lang="sr">Praćenje troškova i budžeta za domaćinstvo na jednostavan način.</span><span data-lang="en">Straightforward household expense and budget tracking.</span></p>
+                        <a href="https://github.com/jovicalesevic/ExpenseTracker" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
                 </article>
                 <article class="projekt__card">
                     <a href="https://jovicalesevic.github.io/planer-izgradnje/" target="_blank" rel="noopener noreferrer" class="projekt__image">
-                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Planer+izgradnje" alt="Planer izgradnje" loading="lazy">
+                        <img src="https://placehold.co/400x240/1a1a2e/00d4ff?text=Planer+izgradnje" alt="Planer izgradnje" class="projekt__thumb" loading="lazy">
+                        <span class="u-visually-hidden projekt__img-alt" aria-hidden="true">
+                            <span data-lang="sr">Planer izgradnje</span>
+                            <span data-lang="en">Construction Planner</span>
+                        </span>
                     </a>
                     <div class="projekt__content">
-                        <h3 class="projekt__title">Planer izgradnje</h3>
-                        <p class="projekt__desc">Web aplikacija za planiranje i praćenje projekata izgradnje u Srbiji.</p>
-                        <a href="https://github.com/jovicalesevic/planer-izgradnje" target="_blank" rel="noopener noreferrer" class="projekt__btn">Pogledaj na GitHub-u</a>
+                        <h3 class="projekt__title"><span data-lang="sr">Planer izgradnje</span><span data-lang="en">Construction Planner</span></h3>
+                        <p class="projekt__desc"><span data-lang="sr">Veb aplikacija za planiranje i praćenje gradilišnih projekata u Srbiji.</span><span data-lang="en">A web application for planning and tracking construction-site projects in Serbia.</span></p>
+                        <a href="https://github.com/jovicalesevic/planer-izgradnje" target="_blank" rel="noopener noreferrer" class="projekt__btn"><span data-lang="sr">Pogledaj na GitHub-u</span><span data-lang="en">View on GitHub</span></a>
                     </div>
                 </article>
             </div>
@@ -143,14 +197,14 @@
     <!-- Veštine Section -->
     <section id="vestine" class="vestine">
         <div class="container">
-            <h2 class="section__title">Veštine</h2>
+            <h2 class="section__title"><span data-lang="sr">Veštine</span><span data-lang="en">Skills</span></h2>
             <div class="vestine__grid">
                 <span class="vestine__badge">HTML5</span>
                 <span class="vestine__badge">CSS3</span>
                 <span class="vestine__badge">JavaScript</span>
                 <span class="vestine__badge">Linux Mint</span>
                 <span class="vestine__badge">GitHub</span>
-                <span class="vestine__badge">Cursor (AI Coding)</span>
+                <span class="vestine__badge"><span data-lang="sr">Cursor (AI kodiranje)</span><span data-lang="en">Cursor (AI coding)</span></span>
             </div>
         </div>
     </section>
@@ -158,10 +212,13 @@
     <!-- Kontakt Section -->
     <section id="kontakt" class="kontakt">
         <div class="container">
-            <h2 class="section__title">Kontakt</h2>
-            <p class="kontakt__text">Imaš ideju za projekat ili ti je potreban moderan web sajt? Otvoren sam za nove prilike i saradnju. Javi se da popričamo o tome kako mogu da pomognem!</p>
+            <h2 class="section__title"><span data-lang="sr">Kontakt</span><span data-lang="en">Contact</span></h2>
+            <p class="kontakt__text">
+                <span data-lang="sr">Imaš ideju za projekat ili ti treba moderan veb sajt? Otvoren sam za nove prilike i saradnju. Javi se da razgovorimo kako mogu da pomognem.</span>
+                <span data-lang="en">Have a project in mind or need a modern website? I am open to new opportunities and collaboration—let’s talk about how I can help.</span>
+            </p>
             <div class="kontakt__links">
-                <a href="mailto:jovica.lesevic@gmail.com" class="kontakt__btn">Pošalji Email</a>
+                <a href="mailto:jovica.lesevic@gmail.com" class="kontakt__btn"><span data-lang="sr">Pošalji email</span><span data-lang="en">Send email</span></a>
             </div>
         </div>
     </section>
@@ -173,6 +230,11 @@
             <a href="mailto:jovica.lesevic@gmail.com" class="footer__link">Email</a>
         </div>
     </footer>
+
+    <div class="u-visually-hidden doc-title" aria-hidden="true">
+        <span data-lang="sr">Joca Lešević | Frontend Developer</span>
+        <span data-lang="en">Jovica Lešević | Frontend Developer</span>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -388,26 +388,63 @@ img {
 
 .projekt__btns {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: 0.5rem;
+    align-items: stretch;
 }
 
 .projekt__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0.55rem 0.65rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    color: var(--accent);
-    border: 1px solid var(--accent);
     border-radius: 6px;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
 }
 
-.projekt__btn:hover {
+.projekt__btn--live {
     background: var(--accent);
     color: var(--bg-primary);
+    border: 1px solid var(--accent);
+    font-weight: 600;
+    box-shadow: 0 2px 12px var(--accent-glow);
+}
+
+.projekt__btn--live:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: var(--bg-primary);
+    box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.projekt__btn--github {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.projekt__btn--github:hover {
+    color: var(--accent);
+    border-color: rgba(0, 212, 255, 0.45);
+    background: rgba(0, 212, 255, 0.06);
+}
+
+@media (max-width: 360px) {
+    .projekt__btns {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .projekt__btn {
+        flex: 1 1 auto;
+        min-width: 100%;
+    }
 }
 
 .projekt__badge {

@@ -145,10 +145,6 @@ img {
     color: var(--accent);
 }
 
-.nav__lang-btn--active {
-    color: var(--accent);
-}
-
 .nav__toggle {
     display: none;
     flex-direction: column;
@@ -595,13 +591,30 @@ img {
     }
 }
 
-/* Po defaultu sakrij sav engleski tekst */
-[data-lang='en'] { display: none !important; }
+/* Sakrij sve prevode po defaultu */
+[data-lang="en"], [data-lang="sr"] {
+    display: none !important;
+}
 
-/* Kada body ima klasu 'lang-en', sakrij srpski a prikaži engleski */
-body.lang-en [data-lang='sr'] { display: none !important; }
-body.lang-en [data-lang='en'] { display: inline-block !important; }
+/* Prikaži srpski samo kada je body klasa lang-sr */
+body.lang-sr [data-lang="sr"] {
+    display: inline-block !important;
+}
+body.lang-sr p[data-lang="sr"], body.lang-sr section[data-lang="sr"], body.lang-sr div[data-lang="sr"] {
+    display: block !important;
+}
 
-/* Kada body ima klasu 'lang-sr', osiguraj da je engleski sakriven */
-body.lang-sr [data-lang='en'] { display: none !important; }
-body.lang-sr [data-lang='sr'] { display: inline-block !important; }
+/* Prikaži engleski samo kada je body klasa lang-en */
+body.lang-en [data-lang="en"] {
+    display: inline-block !important;
+}
+body.lang-en p[data-lang="en"], body.lang-en section[data-lang="en"], body.lang-en div[data-lang="en"] {
+    display: block !important;
+}
+
+/* Stil za aktivno dugme jezika */
+.nav__lang-btn--active {
+    color: var(--accent-color, #00d4ff) !important;
+    font-weight: bold;
+    text-decoration: underline;
+}

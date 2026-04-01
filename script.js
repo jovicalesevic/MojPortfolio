@@ -1,102 +1,54 @@
-const LANG_STORAGE_KEY = 'selectedLanguage';
-
-function getStoredLang() {
-    const stored = localStorage.getItem(LANG_STORAGE_KEY);
-    return stored === 'en' || stored === 'sr' ? stored : 'sr';
-}
-
-function syncDocumentTitle(lang) {
-    const span = document.querySelector('.doc-title [data-lang="' + lang + '"]');
-    if (span) {
-        document.title = span.textContent.trim();
-    }
-}
-
-function syncNavToggleAria(lang) {
-    const btn = document.querySelector('.nav__toggle');
-    const label = document.querySelector('.nav__toggle-label [data-lang="' + lang + '"]');
-    if (btn && label) {
-        btn.setAttribute('aria-label', label.textContent.trim());
-    }
-}
-
-function syncNavLangGroupAria(lang) {
-    const group = document.querySelector('.nav__lang');
-    const label = document.querySelector('.nav__lang-aria-label [data-lang="' + lang + '"]');
-    if (group && label) {
-        group.setAttribute('aria-label', label.textContent.trim());
-    }
-}
-
-function syncProjektImageAlts(lang) {
-    document.querySelectorAll('.projekt__card').forEach((card) => {
-        const img = card.querySelector('.projekt__thumb');
-        const altSpan = card.querySelector('.projekt__img-alt [data-lang="' + lang + '"]');
-        if (img && altSpan) {
-            img.alt = altSpan.textContent.trim();
-        }
-    });
-}
-
 function setLanguage(lang) {
-    if (lang !== 'en' && lang !== 'sr') {
-        return;
-    }
-
+    // 1. Promeni klasu na body elementu
     document.body.classList.remove('lang-sr', 'lang-en');
     document.body.classList.add('lang-' + lang);
-    document.documentElement.lang = lang === 'en' ? 'en' : 'sr';
 
-    syncDocumentTitle(lang);
-    syncNavToggleAria(lang);
-    syncNavLangGroupAria(lang);
-    syncProjektImageAlts(lang);
+    // 2. Sačuvaj izbor u memoriju pretraživača
+    localStorage.setItem('selectedLanguage', lang);
+    document.documentElement.lang = lang;
 
-    document.querySelectorAll('.nav__lang-btn[data-lang-target]').forEach((btn) => {
-        const target = btn.getAttribute('data-lang-target');
-        if (target === 'sr' || target === 'en') {
-            const active = target === lang;
-            btn.classList.toggle('nav__lang-btn--active', active);
-            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    // 3. Osveži izgled dugmadi (active stanje)
+    const buttons = document.querySelectorAll('.nav__lang-btn');
+    buttons.forEach((btn) => {
+        if (btn.getAttribute('data-lang-target') === lang) {
+            btn.classList.add('nav__lang-btn--active');
+            btn.setAttribute('aria-pressed', 'true');
+        } else {
+            btn.classList.remove('nav__lang-btn--active');
+            btn.setAttribute('aria-pressed', 'false');
         }
     });
-
-    localStorage.setItem(LANG_STORAGE_KEY, lang);
 }
 
-function initLanguage() {
-    setLanguage(getStoredLang());
-}
+// Pokreni pri učitavanju stranice
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('selectedLanguage') || 'sr';
+    setLanguage(savedLang === 'en' ? 'en' : 'sr');
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLanguage);
-} else {
-    initLanguage();
-}
-
-const navToggle = document.querySelector('.nav__toggle');
-const navLinks = document.querySelector('.nav__links');
-const navLinksItems = document.querySelectorAll('.nav__links a');
-
-navToggle?.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navLinks?.classList.toggle('active');
-    document.body.style.overflow = navLinks?.classList.contains('active') ? 'hidden' : '';
-});
-
-navLinksItems.forEach((link) => {
-    link.addEventListener('click', () => {
-        navToggle?.classList.remove('active');
-        navLinks?.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-const nav = document.querySelector('.nav');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        nav?.classList.add('scrolled');
-    } else {
-        nav?.classList.remove('scrolled');
+    const navToggle = document.querySelector('.nav__toggle');
+    const navLinks = document.querySelector('.nav__links');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
     }
+
+    document.querySelectorAll('.nav__links a').forEach((link) => {
+        link.addEventListener('click', () => {
+            navToggle?.classList.remove('active');
+            navLinks?.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav?.classList.add('scrolled');
+        } else {
+            nav?.classList.remove('scrolled');
+        }
+    });
 });
